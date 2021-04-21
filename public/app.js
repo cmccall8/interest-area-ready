@@ -1,5 +1,5 @@
 function getOwlsFromServer() {
-	var test = fetch("http://localhost:3000/classrooms/owls");
+	var test = fetch("https://interest-area-ready.herokuapp.com/owls");
 	console.log("TEST", test);
 	return test
 };
@@ -7,7 +7,7 @@ function getOwlsFromServer() {
 function sendDataToServer(data) {
 	var classData = JSON.stringify(data);
 	console.log("CLIENT SIDE:", classData);
-	return fetch("http://localhost:3000/classrooms/owls", {
+	return fetch("https://interest-area-ready.herokuapp.com/owls", {
 		method: "PUT",
 		body: classData,
 		headers: {"Content-Type":"application/json"}
