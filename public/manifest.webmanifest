@@ -1,16 +1,16 @@
 {
-  "name": "Progressive Web App example",
-  "short_name": "pwa-tutorial",
+  "name": "Interest Area Ready App",
+  "short_name": "interest-area-ready",
   "description": "Progressive Web App example to be used in conjuction with the article in LogRocket",
   "icons": [
     {
-      "src": "./images/IAA-owl-01.svg",
+      "src": "/../images/IAA-owl-01.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg"
     }
   ],
   "start_url": "/",
   "display": "fullscreen",
   "theme_color": "#764ABC",
-  "background_color": "#764ABC"
+  "background_color": "#764ABC",
 }
