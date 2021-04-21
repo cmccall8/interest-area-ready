@@ -9,7 +9,8 @@
       "type": "image/svg"
     }
   ],
-  "start_url": "https://interest-area-ready.herokuapp.com",
+  "start_url": "./",
+  "scope": "."
   "display": "fullscreen",
   "theme_color": "#764ABC",
   "background_color": "#764ABC",
