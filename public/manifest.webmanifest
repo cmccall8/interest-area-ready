@@ -9,7 +9,7 @@
       "type": "image/svg"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "https://interest-area-ready.herokuapp.com/classrooms",
   "display": "fullscreen",
   "theme_color": "#764ABC",
   "background_color": "#764ABC",
