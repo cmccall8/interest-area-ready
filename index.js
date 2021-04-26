@@ -88,7 +88,7 @@ app.get("/classrooms/bees", async(req,res) => {
 
 app.put("/classrooms/owls", (req,res) => {
 	console.log("SERVER SIDE:", req.body)
-	butterflyRef.set({
+	owlsRef.set({
 		scale_total: req.body.scale_total,
 		finemtr_total: req.body.finemtr_total,
 		finemtr_progress: req.body.finemtr_progress,
@@ -176,7 +176,7 @@ app.put("/classrooms/butterflies", (req,res) => {
 
 app.put("/classrooms/bees", (req,res) => {
 	console.log("SERVER SIDE:", req.body)
-	butterflyRef.set({
+	beesRef.set({
 		scale_total: req.body.scale_total,
 		finemtr_total: req.body.finemtr_total,
 		finemtr_progress: req.body.finemtr_progress,
