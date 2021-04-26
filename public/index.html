@@ -15,7 +15,7 @@
 		
 		<div id="app">
 
-			<!-- <button @click="getOwls()">TEST</button> -->
+			<!-- <button @click="getowls()">TEST</button> -->
 			<div v-if="page == 'home'" class="home">
 				<h1>WELCOME TEACHERS</h1>
 				<h5>Choose your classroom from the list below to get started.</h5>
@@ -23,11 +23,11 @@
 				<div class="owl-btn"></div>
 				<h5>OWLS</h5>
 				</div>
-				<div class="butterfly-container">
+				<div @click="page = 'butterfly'; getButterflies()" class="butterfly-container">
 				<div class="butterfly-btn"></div>
 				<h5>BUTTERFLIES</h5>
 				</div>
-				<div class="bee-container">
+				<div @click="page = 'bees'; getBees()" class="bee-container">
 				<div class="bee-btn"></div>
 				<h5>BEES</h5>
 				</div>
@@ -101,7 +101,7 @@
 		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>FINE MOTOR SKILLS</h2>
 
-				<button class="btn" @click="updateClass()">SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 			<div class="progress-container">
 			  <div class="progress-bar">
     			<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: progressColor }"></div>
@@ -229,7 +229,7 @@
 		<button @click="page = 'owls'">BACK</button>
 		<h2>ART</h2>
 
-				<button>SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 
 			  	<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
@@ -369,7 +369,7 @@
 		<button @click="page = 'owls'">BACK</button>
 		<h2>MUSIC & MOVEMENT</h2>
 
-				<button>SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 
 			  	<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
@@ -488,7 +488,7 @@
 		<button @click="page = 'owls'">BACK</button>
 		<h2>BLOCKS</h2>
 
-				<button>SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 
 			  	<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
@@ -595,7 +595,7 @@
 		<button @click="page = 'owls'">BACK</button>
 		<h2>DRAMATIC PLAY</h2>
 
-				<button>SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 
 			  	<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
@@ -725,7 +725,7 @@
 		<button @click="page = 'owls'">BACK</button>
 		<h2>MATH/NUMBER</h2>
 
-				<button>SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 
 			  	<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
@@ -832,7 +832,7 @@
 		<button @click="page = 'owls'">BACK</button>
 		<h2>GROSS MOTOR SKILLS</h2>
 
-				<button>SAVE CHANGES</button>
+				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
 
 			  	<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
@@ -931,6 +931,1815 @@
 						<span>{{ grossmtr_excel[2] }}</span>
 					</div>
 		</div>
+
+
+
+
+		<!-- BUTTERFLIES -->
+		<div v-if="page == 'butterflies'" class="butterfly-dash">
+			<button @click="page = 'home'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<h1>BUTTERFLIES</h1>
+			<h4>Classroom Progress:</h4>
+			<div class="progress-container">
+				<div class="progress-bar">
+    			<div class="progress" v-bind:style="{ width: scaleTotal + '%', backgroundColor: progressColor }"></div>
+    			</div>
+    			<p>{{ scaleTotal }}%</p>
+    			</div>
+				<h5>Choose an interest area from below to work on.</h5>
+				<div @click="page = 'butterfly_fm'" class="interest-area">
+					<h4>FINE MOTOR SKILLS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: finemtr_progress_color }"></div>
+  				</div>
+  				<p>{{ finemtr_progress }}%</p>
+				</div>
+				<div @click="page = 'butterfly_art'" class="interest-area">
+					<h4>ART</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
+				</div>
+				<p>{{ art_progress }}%</p>
+			</div>
+				<div @click="page = 'butterfly_music'" class="interest-area">
+					<h4>MUSIC & MOVEMENT</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
+  				</div>
+  				<p>{{ music_progress }}%</p>
+				</div>
+				<div @click="page = 'butterfly_blocks'" class="interest-area">
+					<h4>BLOCKS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
+  				</div>
+  				<p>{{ blocks_progress }}%</p>
+				</div>
+				<div @click="page = 'butterfly_drama'" class="interest-area">
+					<h4>DRAMATIC PLAY</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
+  				</div>
+  				<p>{{ drama_progress }}%</p>
+				</div>
+				<div @click="page = 'butterfly_math'" class="interest-area">
+					<h4>MATH/NUMBERS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
+  					</div>
+  					<p>{{ math_progress }}%</p>
+				</div>
+				<div @click="page = 'butterfly_grossmtr'" class="interest-area">
+					<h4>GROSS MOTOR SKILLS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
+  				</div>
+  				<p>{{ grossmtr_progress }}%</p>
+				</div>
+			</div>
+
+
+		<!-- butterfly FINE MOTOR -->
+		<div v-if="page == 'butterfly_fm'" class="butterfly-item">
+		<button @click="page = 'butterfly'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<h2>FINE MOTOR SKILLS</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+			<div class="progress-container">
+			  <div class="progress-bar">
+    			<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: progressColor }"></div>
+  				</div>
+  				<p>{{ finemtr_progress }}%</p>
+  			</div>
+
+				<h4>SETUP</h4>
+				<div class="area-item">
+				<label class="checkbox">
+					<input type="checkbox" 
+					true-value="1" 
+					false-value="0" 
+					v-model="finemtr_setup[0]"
+					@change="fineMotorScale(finemtr_setup[0])">
+					<!-- <span>{{ finemtr_setup[0] }}</span> -->
+					<span class="check"></span>
+				</label>
+					<h5>At least 10 different choices of fine motor materials are available</h5>
+					<p>must be complete</p>
+				</div>
+
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_setup[1]"
+						@change="fineMotorScale(finemtr_setup[1])">
+						<!-- <span>{{ finemtr_setup[1] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Materials at different levels of difficulty are available</h5>
+					<p>Ex: smaller and larger interlocking blocks</p>
+					
+				</div>
+
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_setup[2]"
+						@change="fineMotorScale(finemtr_setup[2])">
+						<!-- <span>{{ finemtr_setup[2] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>There is a comfortable place for children to use materials</h5>
+					<p>organized, picked up, with a table or rug</p>
+				</div>
+				<h5>INTERACTIONS</h5>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_interaction[0]"
+						@change="fineMotorScale(finemtr_interaction[0])">
+						<!-- <span>{{ finemtr_interaction[0] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Do you regularly resolve problems with sharing in a positive way?</h5>
+					<p>redirect, have alternatives, protect children from sharing if it interferes with play</p>
+				</div>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_interaction[1]"
+						@change="fineMotorScale(finemtr_interaction[1])">
+						<!-- <span>{{ finemtr_interaction[1] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Do you frequently talk to the children as they use fine motor materials?</h5>
+					<p>ex: narrate, name shapes and colors</p>
+
+				</div>
+				<h5>EXCELLENCE</h5>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_excel[0]"
+						@change="fineMotorScale(finemtr_excel[0])">
+						<!-- <span>{{ finemtr_excel[0] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>More than 10 different choices of fine motor materials available</h5>
+					<p> </p>
+				</div>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_excel[1]"
+						@change="fineMotorScale(finemtr_excel[1])">
+						<span class="check"></span>
+					</label>
+					<h5>Do you show extended interest as children use fine motor materials?</h5>
+					<p>must be observed at least twice</p>
+				</div>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_excel[2]"
+						@change="fineMotorScale(finemtr_excel[2])">
+						<!-- <span>{{ finemtr_excel[2] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Do you use comments/questions to help children understand concepts?</h5>
+					<p>Ex: counting, pointing out differences in size, shape, and color</p>
+
+				</div>
+		</div>
+			
+
+
+		<!-- butterfly ART -->
+		<div v-if="page == 'butterfly_art'" class="butterfly-item">
+		<button @click="page = 'butterfly'">BACK</button>
+		<h2>ART</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>At least 1 drawing material accessible to children at least 24 months of age</h5>
+						<p>EX: sufficient amount of usable crayons or markers in usable condition along with paper and drawing surface
+						NA PERMITTED</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_setup[0]"
+						@change="artScale(art_setup[0])">
+						<span>{{ art_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Most art activities allow children to use materials in their own way</h5>
+						<p>coloring pages not used; children not asked to copy an example</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_setup[1]"
+						@change="artScale(art_setup[1])">
+						<span>{{ art_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>No toxic or unsafe material are accessible to children</h5>
+						<p>ex: shaving cream, permanent markers, choking hazards, etc.</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_setup[2]"
+						@change="artScale(art_setup[2])">
+						<span>{{ art_setup[2] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+					<div class="area-item">
+						<h5>Children are not required to participate</h5>
+						<p>Alternate activity available</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[0]"
+						@change="artScale(art_interaction[0])">
+						<span>{{ art_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>While materials are being used, do you pay close attention (appropriate to the age and ability of the children)</h5>
+						<p>ex: stop vchildren from interfering with each others projects, missusing materials, making messes</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[1]"
+						@change="artScale(art_interaction[1])">
+						<span>{{ art_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you name colors as children use them?</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[2]"
+						@change="artScale(art_interaction[2])">
+						<span>{{ art_interaction[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you breifly talk to the children about their artwork?</h5>
+						<p>Ex: "What did you draw?"; "I like your red circle"</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[3]"
+						@change="artScale(art_interaction[3])">
+						<span>{{ art_interaction[3] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Art materials and activities are used to teach children concepts, such as comparing color, shape, size</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[0]"
+						@change="artScale(art_excel[0])">
+						<span>{{ art_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you used words and actions to teach children to use art materials</h5>
+						<p>Ex: show how to roll play dough into a ball; Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[1]"
+						@change="artScale(art_excel[1])">
+						<span>{{ art_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you talk extensively with the children about their artwork?</h5>
+						<p>Ex: "Tell me about your picture"; "You drew lots of circles, see how the lines go all the way around?"; Msut be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[2]"
+						@change="artScale(art_excel[2])">
+						<span>{{ art_excel[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you write captions about artwork dictated by interested children 24 months and older?</h5>
+						<p>Ex: "You said 'ball'! See, I wrote down what you said"; NA PERMITTED</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[3]"
+						@change="artScale(art_excel[3])">
+						<span>{{ art_excel[3] }}</span>
+					</div>
+		</div>
+
+
+		<!-- butterfly MUSIC & MOVEMENT -->
+		<div v-if="page == 'butterfly_music'" class="butterfly-item">
+		<button @click="page = 'butterfly'">BACK</button>
+		<h2>MUSIC & MOVEMENT</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>At least 10 music materials are accessible</h5>
+						<p>EX: simple musical instruments, toys, rattles, music player or radio playing appropriate music</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_setup[0]"
+						@change="musicScale(music_setup[0])">
+						<span>{{ music_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Background music does not interfere with any other activity (or is not used)</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_setup[1]"
+						@change="musicScale(music_setup[1])">
+						<span>{{ music_setup[1] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Music and movement activities are individualized.</h5>
+						<p>ex: quiet lullabies sung to sleepy child, sing hand washing song as child washes; Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[0]"
+						@change="musicScale(music_interaction[0])">
+						<span>{{ art_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Staff-led group music activities are pleasant and children are generally engaged</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[1]"
+						@change="musicScale(music_interaction[1])">
+						<span>{{ music_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Some movement/dance activity is observed</h5>
+						<p>EX: finger plays; clapping/moving to a rhythm</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[2]"
+						@change="musicScale(music_interaction[2])">
+						<span>{{ music_interaction[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Children are not required to participate in group music activities if not interested</h5>
+						<p>Alternative activities available; NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[3]"
+						@change="musicScale(music_interaction[3])">
+						<span>{{ music_interaction[3] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Age appropriate music intruments are available to children 2 and older</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_excel[0]"
+						@change="musicScale(music_excel[0])">
+						<span>{{ music_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you draw attention to features of the music?</h5>
+						<p>Ex: point out rhyming works in lyrics; connect movements to fast/slow tempos; Must be observed once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_excel[1]"
+						@change="musicScale(music_excel[1])">
+						<span>{{ music_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Does some of the muscic/movement activities relate to current classroom themes or topics of interest?</h5>
+						<p>Ex: animal songs with related movements; holiday songs</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_excel[2]"
+						@change="musicScale(music_excel[2])">
+						<span>{{ music_excel[2] }}</span>
+					</div>
+		</div>
+
+
+
+		<!-- butterfly BLOCKS -->
+		<div v-if="page == 'butterfly_blocks'" class="butterfly-item">
+		<button @click="page = 'butterfly'">BACK</button>
+		<h2>BLOCKS</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Enough blocks are accessible for each age group being observed</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[0]"
+						@change="blocksScale(blocks_setup[0])">
+						<span>{{ blocks_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>At least 5 accessories for blocks are accessible for children 24 months and older</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[1]"
+						@change="blocksScale(blocks_setup[1])">
+						<span>{{ blocks_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Blocks and accessories are organized by type</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[2]"
+						@change="blocksScale(blocks_setup[2])">
+						<span>{{ blocks_setup[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Block interest center for older toddlers/twos set aside, with storage and suitable building surface</h5>
+						<p>EX: Flat rug, table, area out of traffic</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[3]"
+						@change="blocksScale(blocks_setup[3])">
+						<span>{{ blocks_setup[3] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Do you show interest and talk to children about their block play?</h5>
+						<p>ex: Ask about what they are building; talk about how blocks fall down; stop quarrels; must be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_interaction[0]"
+						@change="blocksScale(blocks_interaction[0])">
+						<span>{{ blocks_interaction[0] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Large hollow blocks are available for use in a suitably large area where play for toddlers/twos can be active</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_excel[0]"
+						@change="blocksScale(blocks_excel[0])">
+						<span>{{ blocks_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you talk about age appropriate concepts related to block play in ways that interest the children</h5>
+						<p>Ex: compare color, size, shape, structures; count blocks whilev stacking; discuss texture of blocks</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_excel[1]"
+						@change="blocksScale(blocks_excel[1])">
+						<span>{{ blocks_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you demonstrate creating simple structures while describing what you are doing?</h5>
+						<p>Ex: build roads, bridges, towers, etc.; Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_excel[2]"
+						@change="blocksScale(blocks_excel[2])">
+						<span>{{ blocks_excel[2] }}</span>
+					</div>
+		</div>
+
+
+		<!-- butterfly DRAMATIC PLAY -->
+		<div v-if="page == 'butterfly_drama'" class="butterfly-item">
+		<button @click="page = 'butterfly'">BACK</button>
+		<h2>DRAMATIC PLAY</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Many varied appropriate dramatic play materials are accessible, including dolls and soft animals</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[0]"
+						@change="dramaScale(drama_setup[0])">
+						<span>{{ drama_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Materials represent what children experience in everyday life</h5>
+						<p>EX: household routines, work, transportation</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[1]"
+						@change="dramaScale(drama_setup[1])">
+						<span>{{ drama_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Some appropriate dress-up items are accessible for toddlers/twos</h5>
+						<p>EX: hats or purses; NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[2]"
+						@change="dramaScale(drama_setup[2])">
+						<span>{{ drama_setup[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Dramatic play interest center for toddlers/twos is uses, containing materials organized by typed and some child-sized play furniture</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[3]"
+						@change="dramaScale(drama_setup[3])">
+						<span>{{ drama_setup[3] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Do you supervise dramatic play to stop major conflicts or dangerous behavior?</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_interaction[0]"
+						@change="dramaScale(drama_interaction[0])">
+						<span>{{ drama_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you name some of the objects children experience in their dramatic play?</h5>
+						<p>Must be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_interaction[1]"
+						@change="dramaScale(drama_interaction[1])">
+						<span>{{ drama_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you interact possitively (never negatively) while children engage in dramatice play?</h5>
+						<p>EX: help with dress-up items, model how to use materials, etc.; Must be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_interaction[2]"
+						@change="dramaScale(drama_interaction[2])">
+						<span>{{ drama_interaction[2] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>At least 4 dramatic play examples are accessible that clearly represent diveresity</h5>
+						<p>EX: dolls representing different races/cultures, equiptment used by people with dissabilities, clothes and pretend food from different cultures</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_excel[0]"
+						@change="dramaScale(drama_excel[0])">
+						<span>{{ drama_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Materials provided for toddlers/twos to use in more active dramatic play outdoors or in another large area</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_excel[1]"
+						@change="dramaScale(drama_excel[1])">
+						<span>{{ drama_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you frequently join in the children play, adding language appropriately?</h5>
+						<p>Ex: name foods in childs home language and program language; assume a supporitve role in dramtic play initiated by children, enhacing but not taking over; Must be observed at least 3 separate times</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_excel[2]"
+						@change="dramaScale(drama_excel[2])">
+						<span>{{ drama_excel[2] }}</span>
+					</div>
+		</div>
+
+
+
+		<!-- butterfly MATH/NUMBER -->
+		<div v-if="page == 'butterfly_math'" class="butterfly-item">
+		<button @click="page = 'butterfly'">BACK</button>
+		<h2>MATH/NUMBER</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Many appropriate math/number materials are accessible</h5>
+						<p>EX: materials that show size, shape, or number</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_setup[0]"
+						@change="mathScale(math_setup[0])">
+						<span>{{ math_setup[0] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Math is NOT used in a punative manner</h5>
+						<p>Ex: child threatened with timeout if they do not stop talking bt the time the teacher counts to 5</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[0]"
+						@change="mathScale(math_interaction[0])">
+						<span>{{ math_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you correctly compare shapes, quantity, or size?</h5>
+						<p>Ex: Use "more" or "less" when reffering to groups and "smallest" or "biggest" when reffering to objects. Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[1]"
+						@change="mathScale(math_interaction[1])">
+						<span>{{ math_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you count objects for children in an engaging manner?</h5>
+						<p>EX: playfully count childs toes, count crackers as they are put onto a childs plate, point to or move blocks as they are counted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[2]"
+						@change="mathScale(math_interaction[2])">
+						<span>{{ math_interaction[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you use number songs, chants, nursery rhymes, or finger plays with children in an engaging manner?</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[3]"
+						@change="mathScale(math_interaction[3])">
+						<span>{{ math_interaction[3] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Do you help twos become aware of what printed numbers mean?</h5>
+						<p>EX: point to a number in a counting book and count the objects; Must be observed at least once; NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_excel[0]"
+						@change="mathScale(math_excel[0])">
+						<span>{{ math_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you use math words to describe the sequence of daily events?</h5>
+						<p>EX: "first we put on our coats, second we go outdoors</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_excel[1]"
+						@change="mathScale(math_excel[1])">
+						<span>{{ math_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you show number of fingers when using number talk with children?</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_excel[2]"
+						@change="mathScale(math_excel[2])">
+						<span>{{ math_excel[2] }}</span>
+					</div>
+		</div>
+
+
+		<!-- butterfly GROSS MOTOR-->
+		<div v-if="page == 'butterfly_grossmtr'" class="butterfly-item">
+		<button @click="page = 'butterfly'">BACK</button>
+		<h2>GROSS MOTOR SKILLS</h2>
+
+				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Adequate indoor space accessible for children to move freely</h5>
+						<p>EX: young infants can roll over and move arms and legs, older infants can crawl around and explore, toddlers can walk, hop and jump without problems</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[0]"
+						@change="grossmtrScale(grossmtr_setup[0])">
+						<span>{{ grossmtr_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Easily accessed outdoor area being used for toddlers and older children for at least 30 minutes (weather permitting)</h5>
+						<p>NA Permitted for infant</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[1]"
+						@change="grossmtrScale(grossmtr_setup[1])">
+						<span>{{ grossmtr_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Gross motor space is separate from space used by older children</h5>
+						<p>EX: Scheduled for use at different times</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[2]"
+						@change="grossmtrScale(grossmtr_setup[2])">
+						<span>{{ grossmtr_setup[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Outdoor area has protection from elements</h5>
+						<p>EX: Shade, windbreak, good drainage</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[3]"
+						@change="grossmtrScale(grossmtr_setup[3])">
+						<span>{{ grossmtr_setup[3] }}</span>
+					</div>
+
+
+					<div class="area-item">
+						<h5>There are enough appropriate gross motor materials accessible (stationary or portable) to allow children to be active</h5>
+						<p>Must be in good repair and none can be dangerous</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[4]"
+						@change="grossmtrScale(grossmtr_setup[4])">
+						<span>{{ grossmtr_setup[4] }}</span>
+					</div>
+
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Ambple indoor space for children to move freely</h5>
+						<p>EX: uncluttered classroom, open space, cleared pathways</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_excel[0]"
+						@change="grossmtrScale(grossmtr_excel[0])">
+						<span>{{ grossmtr_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Outdoor area used for infants' gross motor play</h5>
+						<p>Check if this does not apply to your classroom</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_excel[1]"
+						@change="grossmtrScale(grossmtr_excel[1])">
+						<span>{{ grossmtr_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Materials (portable and stationary) stimulate a variety of developmentally appropriate large motor skills</h5>
+						<p>EX: reaching, crawling, balancing, climbing</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_excel[2]"
+						@change="grossmtrScale(grossmtr_excel[2])">
+						<span>{{ grossmtr_excel[2] }}</span>
+					</div>
+		</div>
+
+
+
+
+<!-- BEES -->
+		<div v-if="page == 'bees'" class="bees-dash">
+			<button @click="page = 'home'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<h1>BEES</h1>
+			<h4>Classroom Progress:</h4>
+			<div class="progress-container">
+				<div class="progress-bar">
+    			<div class="progress" v-bind:style="{ width: scaleTotal + '%', backgroundColor: progressColor }"></div>
+    			</div>
+    			<p>{{ scaleTotal }}%</p>
+    			</div>
+				<h5>Choose an interest area from below to work on.</h5>
+				<div @click="page = 'bees_fm'" class="interest-area">
+					<h4>FINE MOTOR SKILLS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: finemtr_progress_color }"></div>
+  				</div>
+  				<p>{{ finemtr_progress }}%</p>
+				</div>
+				<div @click="page = 'bees_art'" class="interest-area">
+					<h4>ART</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
+				</div>
+				<p>{{ art_progress }}%</p>
+			</div>
+				<div @click="page = 'bees_music'" class="interest-area">
+					<h4>MUSIC & MOVEMENT</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
+  				</div>
+  				<p>{{ music_progress }}%</p>
+				</div>
+				<div @click="page = 'bees_blocks'" class="interest-area">
+					<h4>BLOCKS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
+  				</div>
+  				<p>{{ blocks_progress }}%</p>
+				</div>
+				<div @click="page = 'bees_drama'" class="interest-area">
+					<h4>DRAMATIC PLAY</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
+  				</div>
+  				<p>{{ drama_progress }}%</p>
+				</div>
+				<div @click="page = 'bees_math'" class="interest-area">
+					<h4>MATH/NUMBERS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
+  					</div>
+  					<p>{{ math_progress }}%</p>
+				</div>
+				<div @click="page = 'bees_grossmtr'" class="interest-area">
+					<h4>GROSS MOTOR SKILLS</h4>
+					<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
+  				</div>
+  				<p>{{ grossmtr_progress }}%</p>
+				</div>
+			</div>
+
+
+		<!-- bees FINE MOTOR -->
+		<div v-if="page == 'bees_fm'" class="bees-item">
+		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<h2>FINE MOTOR SKILLS</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+			<div class="progress-container">
+			  <div class="progress-bar">
+    			<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: progressColor }"></div>
+  				</div>
+  				<p>{{ finemtr_progress }}%</p>
+  			</div>
+
+				<h4>SETUP</h4>
+				<div class="area-item">
+				<label class="checkbox">
+					<input type="checkbox" 
+					true-value="1" 
+					false-value="0" 
+					v-model="finemtr_setup[0]"
+					@change="fineMotorScale(finemtr_setup[0])">
+					<!-- <span>{{ finemtr_setup[0] }}</span> -->
+					<span class="check"></span>
+				</label>
+					<h5>At least 10 different choices of fine motor materials are available</h5>
+					<p>must be complete</p>
+				</div>
+
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_setup[1]"
+						@change="fineMotorScale(finemtr_setup[1])">
+						<!-- <span>{{ finemtr_setup[1] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Materials at different levels of difficulty are available</h5>
+					<p>Ex: smaller and larger interlocking blocks</p>
+					
+				</div>
+
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_setup[2]"
+						@change="fineMotorScale(finemtr_setup[2])">
+						<!-- <span>{{ finemtr_setup[2] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>There is a comfortable place for children to use materials</h5>
+					<p>organized, picked up, with a table or rug</p>
+				</div>
+				<h5>INTERACTIONS</h5>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_interaction[0]"
+						@change="fineMotorScale(finemtr_interaction[0])">
+						<!-- <span>{{ finemtr_interaction[0] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Do you regularly resolve problems with sharing in a positive way?</h5>
+					<p>redirect, have alternatives, protect children from sharing if it interferes with play</p>
+				</div>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_interaction[1]"
+						@change="fineMotorScale(finemtr_interaction[1])">
+						<!-- <span>{{ finemtr_interaction[1] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Do you frequently talk to the children as they use fine motor materials?</h5>
+					<p>ex: narrate, name shapes and colors</p>
+
+				</div>
+				<h5>EXCELLENCE</h5>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_excel[0]"
+						@change="fineMotorScale(finemtr_excel[0])">
+						<!-- <span>{{ finemtr_excel[0] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>More than 10 different choices of fine motor materials available</h5>
+					<p> </p>
+				</div>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_excel[1]"
+						@change="fineMotorScale(finemtr_excel[1])">
+						<span class="check"></span>
+					</label>
+					<h5>Do you show extended interest as children use fine motor materials?</h5>
+					<p>must be observed at least twice</p>
+				</div>
+				<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_excel[2]"
+						@change="fineMotorScale(finemtr_excel[2])">
+						<!-- <span>{{ finemtr_excel[2] }}</span> -->
+						<span class="check"></span>
+					</label>
+					<h5>Do you use comments/questions to help children understand concepts?</h5>
+					<p>Ex: counting, pointing out differences in size, shape, and color</p>
+
+				</div>
+		</div>
+			
+
+
+		<!-- bees ART -->
+		<div v-if="page == 'bees_art'" class="bees-item">
+		<button @click="page = 'bees'">BACK</button>
+		<h2>ART</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>At least 1 drawing material accessible to children at least 24 months of age</h5>
+						<p>EX: sufficient amount of usable crayons or markers in usable condition along with paper and drawing surface
+						NA PERMITTED</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_setup[0]"
+						@change="artScale(art_setup[0])">
+						<span>{{ art_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Most art activities allow children to use materials in their own way</h5>
+						<p>coloring pages not used; children not asked to copy an example</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_setup[1]"
+						@change="artScale(art_setup[1])">
+						<span>{{ art_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>No toxic or unsafe material are accessible to children</h5>
+						<p>ex: shaving cream, permanent markers, choking hazards, etc.</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_setup[2]"
+						@change="artScale(art_setup[2])">
+						<span>{{ art_setup[2] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+					<div class="area-item">
+						<h5>Children are not required to participate</h5>
+						<p>Alternate activity available</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[0]"
+						@change="artScale(art_interaction[0])">
+						<span>{{ art_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>While materials are being used, do you pay close attention (appropriate to the age and ability of the children)</h5>
+						<p>ex: stop vchildren from interfering with each others projects, missusing materials, making messes</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[1]"
+						@change="artScale(art_interaction[1])">
+						<span>{{ art_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you name colors as children use them?</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[2]"
+						@change="artScale(art_interaction[2])">
+						<span>{{ art_interaction[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you breifly talk to the children about their artwork?</h5>
+						<p>Ex: "What did you draw?"; "I like your red circle"</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_interaction[3]"
+						@change="artScale(art_interaction[3])">
+						<span>{{ art_interaction[3] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Art materials and activities are used to teach children concepts, such as comparing color, shape, size</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[0]"
+						@change="artScale(art_excel[0])">
+						<span>{{ art_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you used words and actions to teach children to use art materials</h5>
+						<p>Ex: show how to roll play dough into a ball; Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[1]"
+						@change="artScale(art_excel[1])">
+						<span>{{ art_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you talk extensively with the children about their artwork?</h5>
+						<p>Ex: "Tell me about your picture"; "You drew lots of circles, see how the lines go all the way around?"; Msut be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[2]"
+						@change="artScale(art_excel[2])">
+						<span>{{ art_excel[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you write captions about artwork dictated by interested children 24 months and older?</h5>
+						<p>Ex: "You said 'ball'! See, I wrote down what you said"; NA PERMITTED</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="art_excel[3]"
+						@change="artScale(art_excel[3])">
+						<span>{{ art_excel[3] }}</span>
+					</div>
+		</div>
+
+
+		<!-- bees MUSIC & MOVEMENT -->
+		<div v-if="page == 'bees_music'" class="bees-item">
+		<button @click="page = 'bees'">BACK</button>
+		<h2>MUSIC & MOVEMENT</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>At least 10 music materials are accessible</h5>
+						<p>EX: simple musical instruments, toys, rattles, music player or radio playing appropriate music</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_setup[0]"
+						@change="musicScale(music_setup[0])">
+						<span>{{ music_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Background music does not interfere with any other activity (or is not used)</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_setup[1]"
+						@change="musicScale(music_setup[1])">
+						<span>{{ music_setup[1] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Music and movement activities are individualized.</h5>
+						<p>ex: quiet lullabies sung to sleepy child, sing hand washing song as child washes; Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[0]"
+						@change="musicScale(music_interaction[0])">
+						<span>{{ art_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Staff-led group music activities are pleasant and children are generally engaged</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[1]"
+						@change="musicScale(music_interaction[1])">
+						<span>{{ music_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Some movement/dance activity is observed</h5>
+						<p>EX: finger plays; clapping/moving to a rhythm</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[2]"
+						@change="musicScale(music_interaction[2])">
+						<span>{{ music_interaction[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Children are not required to participate in group music activities if not interested</h5>
+						<p>Alternative activities available; NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_interaction[3]"
+						@change="musicScale(music_interaction[3])">
+						<span>{{ music_interaction[3] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Age appropriate music intruments are available to children 2 and older</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_excel[0]"
+						@change="musicScale(music_excel[0])">
+						<span>{{ music_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you draw attention to features of the music?</h5>
+						<p>Ex: point out rhyming works in lyrics; connect movements to fast/slow tempos; Must be observed once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_excel[1]"
+						@change="musicScale(music_excel[1])">
+						<span>{{ music_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Does some of the muscic/movement activities relate to current classroom themes or topics of interest?</h5>
+						<p>Ex: animal songs with related movements; holiday songs</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="music_excel[2]"
+						@change="musicScale(music_excel[2])">
+						<span>{{ music_excel[2] }}</span>
+					</div>
+		</div>
+
+
+
+		<!-- bees BLOCKS -->
+		<div v-if="page == 'bees_blocks'" class="bees-item">
+		<button @click="page = 'bees'">BACK</button>
+		<h2>BLOCKS</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Enough blocks are accessible for each age group being observed</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[0]"
+						@change="blocksScale(blocks_setup[0])">
+						<span>{{ blocks_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>At least 5 accessories for blocks are accessible for children 24 months and older</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[1]"
+						@change="blocksScale(blocks_setup[1])">
+						<span>{{ blocks_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Blocks and accessories are organized by type</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[2]"
+						@change="blocksScale(blocks_setup[2])">
+						<span>{{ blocks_setup[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Block interest center for older toddlers/twos set aside, with storage and suitable building surface</h5>
+						<p>EX: Flat rug, table, area out of traffic</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_setup[3]"
+						@change="blocksScale(blocks_setup[3])">
+						<span>{{ blocks_setup[3] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Do you show interest and talk to children about their block play?</h5>
+						<p>ex: Ask about what they are building; talk about how blocks fall down; stop quarrels; must be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_interaction[0]"
+						@change="blocksScale(blocks_interaction[0])">
+						<span>{{ blocks_interaction[0] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Large hollow blocks are available for use in a suitably large area where play for toddlers/twos can be active</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_excel[0]"
+						@change="blocksScale(blocks_excel[0])">
+						<span>{{ blocks_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you talk about age appropriate concepts related to block play in ways that interest the children</h5>
+						<p>Ex: compare color, size, shape, structures; count blocks whilev stacking; discuss texture of blocks</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_excel[1]"
+						@change="blocksScale(blocks_excel[1])">
+						<span>{{ blocks_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you demonstrate creating simple structures while describing what you are doing?</h5>
+						<p>Ex: build roads, bridges, towers, etc.; Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="blocks_excel[2]"
+						@change="blocksScale(blocks_excel[2])">
+						<span>{{ blocks_excel[2] }}</span>
+					</div>
+		</div>
+
+
+		<!-- bees DRAMATIC PLAY -->
+		<div v-if="page == 'bees_drama'" class="bees-item">
+		<button @click="page = 'bees'">BACK</button>
+		<h2>DRAMATIC PLAY</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Many varied appropriate dramatic play materials are accessible, including dolls and soft animals</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[0]"
+						@change="dramaScale(drama_setup[0])">
+						<span>{{ drama_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Materials represent what children experience in everyday life</h5>
+						<p>EX: household routines, work, transportation</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[1]"
+						@change="dramaScale(drama_setup[1])">
+						<span>{{ drama_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Some appropriate dress-up items are accessible for toddlers/twos</h5>
+						<p>EX: hats or purses; NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[2]"
+						@change="dramaScale(drama_setup[2])">
+						<span>{{ drama_setup[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Dramatic play interest center for toddlers/twos is uses, containing materials organized by typed and some child-sized play furniture</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_setup[3]"
+						@change="dramaScale(drama_setup[3])">
+						<span>{{ drama_setup[3] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Do you supervise dramatic play to stop major conflicts or dangerous behavior?</h5>
+						<p></p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_interaction[0]"
+						@change="dramaScale(drama_interaction[0])">
+						<span>{{ drama_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you name some of the objects children experience in their dramatic play?</h5>
+						<p>Must be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_interaction[1]"
+						@change="dramaScale(drama_interaction[1])">
+						<span>{{ drama_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you interact possitively (never negatively) while children engage in dramatice play?</h5>
+						<p>EX: help with dress-up items, model how to use materials, etc.; Must be observed at least twice</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_interaction[2]"
+						@change="dramaScale(drama_interaction[2])">
+						<span>{{ drama_interaction[2] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>At least 4 dramatic play examples are accessible that clearly represent diveresity</h5>
+						<p>EX: dolls representing different races/cultures, equiptment used by people with dissabilities, clothes and pretend food from different cultures</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_excel[0]"
+						@change="dramaScale(drama_excel[0])">
+						<span>{{ drama_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Materials provided for toddlers/twos to use in more active dramatic play outdoors or in another large area</h5>
+						<p>NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_excel[1]"
+						@change="dramaScale(drama_excel[1])">
+						<span>{{ drama_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you frequently join in the children play, adding language appropriately?</h5>
+						<p>Ex: name foods in childs home language and program language; assume a supporitve role in dramtic play initiated by children, enhacing but not taking over; Must be observed at least 3 separate times</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="drama_excel[2]"
+						@change="dramaScale(drama_excel[2])">
+						<span>{{ drama_excel[2] }}</span>
+					</div>
+		</div>
+
+
+
+		<!-- bees MATH/NUMBER -->
+		<div v-if="page == 'bees_math'" class="bees-item">
+		<button @click="page = 'bees'">BACK</button>
+		<h2>MATH/NUMBER</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Many appropriate math/number materials are accessible</h5>
+						<p>EX: materials that show size, shape, or number</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_setup[0]"
+						@change="mathScale(math_setup[0])">
+						<span>{{ math_setup[0] }}</span>
+					</div>
+
+
+					<h5>INTERACTIONS</h5>
+
+					<div class="area-item">
+						<h5>Math is NOT used in a punative manner</h5>
+						<p>Ex: child threatened with timeout if they do not stop talking bt the time the teacher counts to 5</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[0]"
+						@change="mathScale(math_interaction[0])">
+						<span>{{ math_interaction[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you correctly compare shapes, quantity, or size?</h5>
+						<p>Ex: Use "more" or "less" when reffering to groups and "smallest" or "biggest" when reffering to objects. Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[1]"
+						@change="mathScale(math_interaction[1])">
+						<span>{{ math_interaction[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you count objects for children in an engaging manner?</h5>
+						<p>EX: playfully count childs toes, count crackers as they are put onto a childs plate, point to or move blocks as they are counted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[2]"
+						@change="mathScale(math_interaction[2])">
+						<span>{{ math_interaction[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you use number songs, chants, nursery rhymes, or finger plays with children in an engaging manner?</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_interaction[3]"
+						@change="mathScale(math_interaction[3])">
+						<span>{{ math_interaction[3] }}</span>
+					</div>
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Do you help twos become aware of what printed numbers mean?</h5>
+						<p>EX: point to a number in a counting book and count the objects; Must be observed at least once; NA Permitted</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_excel[0]"
+						@change="mathScale(math_excel[0])">
+						<span>{{ math_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you use math words to describe the sequence of daily events?</h5>
+						<p>EX: "first we put on our coats, second we go outdoors</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_excel[1]"
+						@change="mathScale(math_excel[1])">
+						<span>{{ math_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Do you show number of fingers when using number talk with children?</h5>
+						<p>Must be observed at least once</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="math_excel[2]"
+						@change="mathScale(math_excel[2])">
+						<span>{{ math_excel[2] }}</span>
+					</div>
+		</div>
+
+
+		<!-- bees GROSS MOTOR-->
+		<div v-if="page == 'bees_grossmtr'" class="bees-item">
+		<button @click="page = 'bees'">BACK</button>
+		<h2>GROSS MOTOR SKILLS</h2>
+
+				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
+
+			  	<div class="progress-bar">
+    				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
+  				</div>
+
+					<h5>SETUP</h5>
+					<div class="area-item">
+						<h5>Adequate indoor space accessible for children to move freely</h5>
+						<p>EX: young infants can roll over and move arms and legs, older infants can crawl around and explore, toddlers can walk, hop and jump without problems</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[0]"
+						@change="grossmtrScale(grossmtr_setup[0])">
+						<span>{{ grossmtr_setup[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Easily accessed outdoor area being used for toddlers and older children for at least 30 minutes (weather permitting)</h5>
+						<p>NA Permitted for infant</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[1]"
+						@change="grossmtrScale(grossmtr_setup[1])">
+						<span>{{ grossmtr_setup[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Gross motor space is separate from space used by older children</h5>
+						<p>EX: Scheduled for use at different times</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[2]"
+						@change="grossmtrScale(grossmtr_setup[2])">
+						<span>{{ grossmtr_setup[2] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Outdoor area has protection from elements</h5>
+						<p>EX: Shade, windbreak, good drainage</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[3]"
+						@change="grossmtrScale(grossmtr_setup[3])">
+						<span>{{ grossmtr_setup[3] }}</span>
+					</div>
+
+
+					<div class="area-item">
+						<h5>There are enough appropriate gross motor materials accessible (stationary or portable) to allow children to be active</h5>
+						<p>Must be in good repair and none can be dangerous</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_setup[4]"
+						@change="grossmtrScale(grossmtr_setup[4])">
+						<span>{{ grossmtr_setup[4] }}</span>
+					</div>
+
+
+
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<h5>Ambple indoor space for children to move freely</h5>
+						<p>EX: uncluttered classroom, open space, cleared pathways</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_excel[0]"
+						@change="grossmtrScale(grossmtr_excel[0])">
+						<span>{{ grossmtr_excel[0] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Outdoor area used for infants' gross motor play</h5>
+						<p>Check if this does not apply to your classroom</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_excel[1]"
+						@change="grossmtrScale(grossmtr_excel[1])">
+						<span>{{ grossmtr_excel[1] }}</span>
+					</div>
+
+					<div class="area-item">
+						<h5>Materials (portable and stationary) stimulate a variety of developmentally appropriate large motor skills</h5>
+						<p>EX: reaching, crawling, balancing, climbing</p>
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="grossmtr_excel[2]"
+						@change="grossmtrScale(grossmtr_excel[2])">
+						<span>{{ grossmtr_excel[2] }}</span>
+					</div>
+		</div>
+
+
+
 
 		</div>
 

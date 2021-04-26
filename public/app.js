@@ -4,10 +4,42 @@ function getOwlsFromServer() {
 	return test
 };
 
-function sendDataToServer(data) {
+function getButterfliesFromServer() {
+	var test = fetch("https://interest-area-ready.herokuapp.com/classrooms/butterflies");
+	console.log("TEST", test);
+	return test
+};
+
+function getBeesFromServer() {
+	var test = fetch("https://interest-area-ready.herokuapp.com/classrooms/butterflies");
+	console.log("TEST", test);
+	return test
+};
+
+function sendOwlDataToServer(data) {
 	var classData = JSON.stringify(data);
 	console.log("CLIENT SIDE:", classData);
 	return fetch("https://interest-area-ready.herokuapp.com/classrooms/owls", {
+		method: "PUT",
+		body: classData,
+		headers: {"Content-Type":"application/json"}
+	})
+};
+
+function sendButterflyDataToServer(data) {
+	var classData = JSON.stringify(data);
+	console.log("CLIENT SIDE:", classData);
+	return fetch("https://interest-area-ready.herokuapp.com/classrooms/butterflies", {
+		method: "PUT",
+		body: classData,
+		headers: {"Content-Type":"application/json"}
+	})
+};
+
+function sendBeeDataToServer(data) {
+	var classData = JSON.stringify(data);
+	console.log("CLIENT SIDE:", classData);
+	return fetch("https://interest-area-ready.herokuapp.com/classrooms/bees", {
 		method: "PUT",
 		body: classData,
 		headers: {"Content-Type":"application/json"}
@@ -19,47 +51,6 @@ var app = new Vue({
 	data: {
 		page: "home",
 		id: 1,
-		// scale_total: 0,
-		// finemtr_progress: 0,
-		// finemtr_progress_color: "red",
-		// finemtr_setup: ["0", "0", "0"],
-		// finemtr_interaction: ["0", "0"],
-		// finemtr_excel: ["0", "0", "0"],
-		// art_total: 0,
-		// art_progress: 0,
-		// art_progress_color: "red",
-		// art_setup: ["0", "0", "0"],
-		// art_interaction: ["0", "0", "0", "0"],
-		// art_excel: ["0", "0", "0", "0"],
-		// music_total: 0,
-		// music_progress: 0,
-		// music_progress_color: "red",
-		// music_setup: ["0", "0"],
-		// music_interaction: ["0", "0", "0", "0"],
-		// music_excel: ["0", "0", "0"],
-		// blocks_total: 0,
-		// blocks_progress: 0,
-		// blocks_progress_color: "red",
-		// blocks_setup: ["0", "0", "0", "0"],
-		// blocks_interaction: ["0"],
-		// blocks_excel: ["0", "0", "0"],
-		// drama_total: 0,
-		// drama_progress: 0,
-		// drama_progress_color: "red",
-		// drama_setup: ["0", "0", "0", "0"],
-		// drama_interaction: ["0", "0", "0"],
-		// drama_excel: ["0", "0", "0"],
-		// math_total: 0,
-		// math_progress: 0,
-		// math_progress_color: "red",
-		// math_setup: ["0"],
-		// math_interaction: ["0", "0", "0", "0"],
-		// math_excel: ["0", "0", "0"],
-		// grossmtr_total: 0,
-		// grossmtr_progress: 0,
-		// grossmtr_progress_color: "red",
-		// grossmtr_setup: ["0", "0", "0", "0", "0"],
-		// grossmtr_excel: ["0", "0", "0"]	
 		scale_total: 0,
 		finemtr_total: 0,
 		finemtr_progress: 0,
@@ -153,9 +144,55 @@ var app = new Vue({
 			}).catch(err => {
 				console.log('err: ', err);
 			})
-			// scaleTotal();
-			// console.log("1", scaleTotal());
-			// console.log("2", scale_total);
+		},
+
+		getButterflies: function() {
+			getButterfliesFromServer().then((response) => {
+				response.json().then((data) => {
+					console.log("DATA:", data);
+					console.log(data.finemtr_setup);
+					//this.scale_total = data.scale_total,
+					this.finemtr_total = data.finemtr_total,
+					this.finemtr_progress = data.finemtr_progress,
+					this.finemtr_setup = data.finemtr_setup,
+					this.finemtr_interaction = data.finemtr_interaction,
+					this.finemtr_excel = data.finemtr_excel,
+					this.art_total = data.art_total,
+					this.art_progress = data.art_progress,
+					this.art_setup = data.art_setup,
+					this.art_interaction = data.art_interaction,
+					this.art_excel = data.art_excel,
+					this.music_total = data.music_total,
+					this.music_progress = data.music_progress,
+					this.music_setup = data.music_setup,
+					this.music_interaction = data.music_interaction,
+					this.music_excel = data.music_excel,
+					this.blocks_total = data.blocks_total,
+					this.blocks_progress = data.blocks_progress,
+					this.blocks_setup = data.blocks_setup,
+					this.blocks_interaction = data.blocks_interaction,
+					this.blocks_excel = data.blocks_excel,
+					this.drama_total = data.drama_total,
+					this.drama_progress = data.drama_progress,
+					this.drama_setup = data.drama_setup,
+					this.drama_interaction = data.drama_interaction,
+					this.drama_excel = data.drama_excel,
+					this.math_total = data.math_total,
+					this.math_progress = data.math_progress,
+					this.math_setup = data.math_setup,
+					this.math_interaction = data.math_interaction,
+					this.math_excel = data.math_excel,
+					this.grossmtr_total = data.grossmtr_total,
+					this.grossmtr_progress = data.grossmtr_progress,
+					this.grossmtr_setup = data.grossmtr_setup,
+					this.grossmtr_excel = data.grossmtr_excel	
+				})
+				console.log('response: ', response);
+				console.log(response.data);
+				
+			}).catch(err => {
+				console.log('err: ', err);
+			})
 		},
 
 		submitChanges: function (item) {
@@ -270,8 +307,8 @@ var app = new Vue({
 			return Math.ceil((current/complete) * 100);
 		},
 
-		updateClass: function () {
-			sendDataToServer({
+		updateOwls: function () {
+			sendOwlDataToServer({
 				scale_total: this.scale_total,
 				finemtr_total: this.finemtr_total,
 				finemtr_progress: this.finemtr_progress,
@@ -312,7 +349,95 @@ var app = new Vue({
 					console.log("updated");
 				}
 			})
-		}
+		},
+
+		updateButterflies: function () {
+			sendButterflyDataToServer({
+				scale_total: this.scale_total,
+				finemtr_total: this.finemtr_total,
+				finemtr_progress: this.finemtr_progress,
+				finemtr_setup: this.finemtr_setup,
+				finemtr_interaction: this.finemtr_interaction,
+				finemtr_excel: this.finemtr_excel,
+				art_total: this.art_total,
+				art_progress: this.art_progress,
+				art_setup: this.art_setup,
+				art_interaction: this.art_interaction,
+				art_excel: this.art_excel,
+				music_total: this.music_total,
+				music_progress: this.music_progress,
+				music_setup: this.music_setup,
+				music_interaction: this.music_interaction,
+				music_excel: this.music_excel,
+				blocks_total: this.blocks_total,
+				blocks_progress: this.blocks_progress,
+				blocks_setup: this.blocks_setup,
+				blocks_interaction: this.blocks_interaction,
+				blocks_excel: this.blocks_excel,
+				drama_total: this.drama_total,
+				drama_progress: this.drama_progress,
+				drama_setup: this.drama_setup,
+				drama_interaction: this.drama_interaction,
+				drama_excel: this.drama_excel,
+				math_total: this.math_total,
+				math_progress: this.math_progress,
+				math_setup: this.math_setup,
+				math_interaction: this.math_interaction,
+				math_excel: this.math_excel,
+				grossmtr_total: this.grossmtr_total,
+				grossmtr_progress: this.grossmtr_progress,
+				grossmtr_setup: this.grossmtr_setup,
+				grossmtr_excel: this.grossmtr_excel	
+			}).then((response) => {
+				if (response.status == 200) {
+					console.log("updated");
+				}
+			})
+		},
+
+		updateBees: function () {
+			sendBeeDataToServer({
+				scale_total: this.scale_total,
+				finemtr_total: this.finemtr_total,
+				finemtr_progress: this.finemtr_progress,
+				finemtr_setup: this.finemtr_setup,
+				finemtr_interaction: this.finemtr_interaction,
+				finemtr_excel: this.finemtr_excel,
+				art_total: this.art_total,
+				art_progress: this.art_progress,
+				art_setup: this.art_setup,
+				art_interaction: this.art_interaction,
+				art_excel: this.art_excel,
+				music_total: this.music_total,
+				music_progress: this.music_progress,
+				music_setup: this.music_setup,
+				music_interaction: this.music_interaction,
+				music_excel: this.music_excel,
+				blocks_total: this.blocks_total,
+				blocks_progress: this.blocks_progress,
+				blocks_setup: this.blocks_setup,
+				blocks_interaction: this.blocks_interaction,
+				blocks_excel: this.blocks_excel,
+				drama_total: this.drama_total,
+				drama_progress: this.drama_progress,
+				drama_setup: this.drama_setup,
+				drama_interaction: this.drama_interaction,
+				drama_excel: this.drama_excel,
+				math_total: this.math_total,
+				math_progress: this.math_progress,
+				math_setup: this.math_setup,
+				math_interaction: this.math_interaction,
+				math_excel: this.math_excel,
+				grossmtr_total: this.grossmtr_total,
+				grossmtr_progress: this.grossmtr_progress,
+				grossmtr_setup: this.grossmtr_setup,
+				grossmtr_excel: this.grossmtr_excel	
+			}).then((response) => {
+				if (response.status == 200) {
+					console.log("updated");
+				}
+			})
+		},
 
 
 	},
