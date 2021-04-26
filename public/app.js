@@ -195,6 +195,55 @@ var app = new Vue({
 			})
 		},
 
+		getBees: function() {
+			getButterfliesFromServer().then((response) => {
+				response.json().then((data) => {
+					console.log("DATA:", data);
+					console.log(data.finemtr_setup);
+					//this.scale_total = data.scale_total,
+					this.finemtr_total = data.finemtr_total,
+					this.finemtr_progress = data.finemtr_progress,
+					this.finemtr_setup = data.finemtr_setup,
+					this.finemtr_interaction = data.finemtr_interaction,
+					this.finemtr_excel = data.finemtr_excel,
+					this.art_total = data.art_total,
+					this.art_progress = data.art_progress,
+					this.art_setup = data.art_setup,
+					this.art_interaction = data.art_interaction,
+					this.art_excel = data.art_excel,
+					this.music_total = data.music_total,
+					this.music_progress = data.music_progress,
+					this.music_setup = data.music_setup,
+					this.music_interaction = data.music_interaction,
+					this.music_excel = data.music_excel,
+					this.blocks_total = data.blocks_total,
+					this.blocks_progress = data.blocks_progress,
+					this.blocks_setup = data.blocks_setup,
+					this.blocks_interaction = data.blocks_interaction,
+					this.blocks_excel = data.blocks_excel,
+					this.drama_total = data.drama_total,
+					this.drama_progress = data.drama_progress,
+					this.drama_setup = data.drama_setup,
+					this.drama_interaction = data.drama_interaction,
+					this.drama_excel = data.drama_excel,
+					this.math_total = data.math_total,
+					this.math_progress = data.math_progress,
+					this.math_setup = data.math_setup,
+					this.math_interaction = data.math_interaction,
+					this.math_excel = data.math_excel,
+					this.grossmtr_total = data.grossmtr_total,
+					this.grossmtr_progress = data.grossmtr_progress,
+					this.grossmtr_setup = data.grossmtr_setup,
+					this.grossmtr_excel = data.grossmtr_excel	
+				})
+				console.log('response: ', response);
+				console.log(response.data);
+				
+			}).catch(err => {
+				console.log('err: ', err);
+			})
+		},
+
 		submitChanges: function (item) {
 			submitChangesToServer(item).then((response) => {
 				if (response.status == 200) {
