@@ -196,7 +196,7 @@ var app = new Vue({
 		},
 
 		getBees: function() {
-			getButterfliesFromServer().then((response) => {
+			getBeesFromServer().then((response) => {
 				response.json().then((data) => {
 					console.log("DATA:", data);
 					console.log(data.finemtr_setup);
