@@ -226,7 +226,7 @@
 
 		<!-- OWLS ART -->
 		<div v-if="page == 'owls_art'" class="owls-item">
-		<button @click="page = 'owls'">BACK</button>
+		<button @click="page = 'owls'" class="back-btn">BACK</button>
 		<h2>ART</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -334,15 +334,16 @@
 
 
 					<h5>EXCELLENCE</h5>
-					<label class="checkbox">
+					
+					<div class="area-item">
+						<label class="checkbox">
 						<input type="checkbox" 
 						true-value="1" 
 						false-value="0" 
 						v-model="art_excel[0]"
 						@change="artScale(art_excel[0])">
 						<span class="check"></span>
-					</label>
-					<div class="area-item">
+						</label>
 						<h5>Art materials and activities are used to teach children concepts, such as comparing color, shape, size</h5>
 						<p>Must be observed at least once</p>
 					</div>
@@ -390,7 +391,7 @@
 
 		<!-- OWLS MUSIC & MOVEMENT -->
 		<div v-if="page == 'owls_music'" class="owls-item">
-			<button @click="page = 'owls'">BACK</button>
+			<button @click="page = 'owls'" class="back-btn">BACK</button>
 			<h2>MUSIC & MOVEMENT</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -528,7 +529,7 @@
 
 		<!-- OWLS BLOCKS -->
 		<div v-if="page == 'owls_blocks'" class="owls-item">
-		<button @click="page = 'owls'">BACK</button>
+		<button @click="page = 'owls'" class="back-btn">BACK</button>
 		<h2>BLOCKS</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -623,7 +624,7 @@
 					</div>
 
 					<div class="area-item">
-						<label class="check">
+						<label class="checkbox">
 							<input type="checkbox" 
 							true-value="1" 
 							false-value="0" 
@@ -652,7 +653,7 @@
 
 		<!-- OWLS DRAMATIC PLAY -->
 		<div v-if="page == 'owls_drama'" class="owls-item">
-		<button @click="page = 'owls'">BACK</button>
+		<button @click="page = 'owls'" class="back-btn">BACK</button>
 		<h2>DRAMATIC PLAY</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -802,7 +803,7 @@
 
 		<!-- OWLS MATH/NUMBER -->
 		<div v-if="page == 'owls_math'" class="owls-item">
-		<button @click="page = 'owls'">BACK</button>
+		<button @click="page = 'owls'" class="back-btn">BACK</button>
 		<h2>MATH/NUMBER</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -925,7 +926,7 @@
 
 		<!-- OWLS GROSS MOTOR-->
 		<div v-if="page == 'owls_grossmtr'" class="owls-item">
-		<button @click="page = 'owls'">BACK</button>
+		<button @click="page = 'owls'" class="back-btn">BACK</button>
 		<h2>GROSS MOTOR SKILLS</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
