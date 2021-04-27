@@ -98,128 +98,128 @@
 
 		<!-- OWLS FINE MOTOR -->
 		<div v-if="page == 'owls_fm'" class="owls-item">
-		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
-		<h2>FINE MOTOR SKILLS</h2>
+			<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<h2>FINE MOTOR SKILLS</h2>
 
-				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
-			<div class="progress-container">
-			  <div class="progress-bar">
-    			<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: progressColor }"></div>
-  				</div>
-  				<p>{{ finemtr_progress }}%</p>
-  			</div>
+					<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
+				<div class="progress-container">
+				  <div class="progress-bar">
+	    			<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: progressColor }"></div>
+	  				</div>
+	  				<p>{{ finemtr_progress }}%</p>
+	  			</div>
 
-				<h4>SETUP</h4>
-				<div class="area-item">
-				<label class="checkbox">
-					<input type="checkbox" 
-					true-value="1" 
-					false-value="0" 
-					v-model="finemtr_setup[0]"
-					@change="fineMotorScale(finemtr_setup[0])">
-					<!-- <span>{{ finemtr_setup[0] }}</span> -->
-					<span class="check"></span>
-				</label>
-					<h5>At least 10 different choices of fine motor materials are available</h5>
-					<p>must be complete</p>
-				</div>
+					<h4>SETUP</h4>
+					<div class="area-item">
+					<label class="checkbox">
+						<input type="checkbox" 
+						true-value="1" 
+						false-value="0" 
+						v-model="finemtr_setup[0]"
+						@change="fineMotorScale(finemtr_setup[0])">
+						<!-- <span>{{ finemtr_setup[0] }}</span> -->
+						<span class="check"></span>
+					</label>
+						<h5>At least 10 different choices of fine motor materials are available</h5>
+						<p>must be complete</p>
+					</div>
 
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_setup[1]"
-						@change="fineMotorScale(finemtr_setup[1])">
-						<!-- <span>{{ finemtr_setup[1] }}</span> -->
-						<span class="check"></span>
-					</label>
-					<h5>Materials at different levels of difficulty are available</h5>
-					<p>Ex: smaller and larger interlocking blocks</p>
-					
-				</div>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_setup[1]"
+							@change="fineMotorScale(finemtr_setup[1])">
+							<!-- <span>{{ finemtr_setup[1] }}</span> -->
+							<span class="check"></span>
+						</label>
+						<h5>Materials at different levels of difficulty are available</h5>
+						<p>Ex: smaller and larger interlocking blocks</p>
+						
+					</div>
 
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_setup[2]"
-						@change="fineMotorScale(finemtr_setup[2])">
-						<!-- <span>{{ finemtr_setup[2] }}</span> -->
-						<span class="check"></span>
-					</label>
-					<h5>There is a comfortable place for children to use materials</h5>
-					<p>organized, picked up, with a table or rug</p>
-				</div>
-				<h5>INTERACTIONS</h5>
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_interaction[0]"
-						@change="fineMotorScale(finemtr_interaction[0])">
-						<!-- <span>{{ finemtr_interaction[0] }}</span> -->
-						<span class="check"></span>
-					</label>
-					<h5>Do you regularly resolve problems with sharing in a positive way?</h5>
-					<p>redirect, have alternatives, protect children from sharing if it interferes with play</p>
-				</div>
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_interaction[1]"
-						@change="fineMotorScale(finemtr_interaction[1])">
-						<!-- <span>{{ finemtr_interaction[1] }}</span> -->
-						<span class="check"></span>
-					</label>
-					<h5>Do you frequently talk to the children as they use fine motor materials?</h5>
-					<p>ex: narrate, name shapes and colors</p>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_setup[2]"
+							@change="fineMotorScale(finemtr_setup[2])">
+							<!-- <span>{{ finemtr_setup[2] }}</span> -->
+							<span class="check"></span>
+						</label>
+						<h5>There is a comfortable place for children to use materials</h5>
+						<p>organized, picked up, with a table or rug</p>
+					</div>
+					<h5>INTERACTIONS</h5>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_interaction[0]"
+							@change="fineMotorScale(finemtr_interaction[0])">
+							<!-- <span>{{ finemtr_interaction[0] }}</span> -->
+							<span class="check"></span>
+						</label>
+						<h5>Do you regularly resolve problems with sharing in a positive way?</h5>
+						<p>redirect, have alternatives, protect children from sharing if it interferes with play</p>
+					</div>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_interaction[1]"
+							@change="fineMotorScale(finemtr_interaction[1])">
+							<!-- <span>{{ finemtr_interaction[1] }}</span> -->
+							<span class="check"></span>
+						</label>
+						<h5>Do you frequently talk to the children as they use fine motor materials?</h5>
+						<p>ex: narrate, name shapes and colors</p>
 
-				</div>
-				<h5>EXCELLENCE</h5>
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_excel[0]"
-						@change="fineMotorScale(finemtr_excel[0])">
-						<!-- <span>{{ finemtr_excel[0] }}</span> -->
-						<span class="check"></span>
-					</label>
-					<h5>More than 10 different choices of fine motor materials available</h5>
-					<p> </p>
-				</div>
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_excel[1]"
-						@change="fineMotorScale(finemtr_excel[1])">
-						<span class="check"></span>
-					</label>
-					<h5>Do you show extended interest as children use fine motor materials?</h5>
-					<p>must be observed at least twice</p>
-				</div>
-				<div class="area-item">
-					<label class="checkbox">
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="finemtr_excel[2]"
-						@change="fineMotorScale(finemtr_excel[2])">
-						<!-- <span>{{ finemtr_excel[2] }}</span> -->
-						<span class="check"></span>
-					</label>
-					<h5>Do you use comments/questions to help children understand concepts?</h5>
-					<p>Ex: counting, pointing out differences in size, shape, and color</p>
+					</div>
+					<h5>EXCELLENCE</h5>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_excel[0]"
+							@change="fineMotorScale(finemtr_excel[0])">
+							<!-- <span>{{ finemtr_excel[0] }}</span> -->
+							<span class="check"></span>
+						</label>
+						<h5>More than 10 different choices of fine motor materials available</h5>
+						<p> </p>
+					</div>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_excel[1]"
+							@change="fineMotorScale(finemtr_excel[1])">
+							<span class="check"></span>
+						</label>
+						<h5>Do you show extended interest as children use fine motor materials?</h5>
+						<p>must be observed at least twice</p>
+					</div>
+					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="finemtr_excel[2]"
+							@change="fineMotorScale(finemtr_excel[2])">
+							<!-- <span>{{ finemtr_excel[2] }}</span> -->
+							<span class="check"></span>
+						</label>
+						<h5>Do you use comments/questions to help children understand concepts?</h5>
+						<p>Ex: counting, pointing out differences in size, shape, and color</p>
 
-				</div>
+					</div>
 		</div>
 			
 
@@ -237,15 +237,18 @@
 
 					<h5>SETUP</h5>
 					<div class="area-item">
+						<label class="checkbox">
+							<input type="checkbox" 
+							true-value="1" 
+							false-value="0" 
+							v-model="art_setup[0]"
+							@change="artScale(art_setup[0])">
+							<span class="check"></span>
+						</label>
 						<h5>At least 1 drawing material accessible to children at least 24 months of age</h5>
 						<p>EX: sufficient amount of usable crayons or markers in usable condition along with paper and drawing surface
 						NA PERMITTED</p>
-						<input type="checkbox" 
-						true-value="1" 
-						false-value="0" 
-						v-model="art_setup[0]"
-						@change="artScale(art_setup[0])">
-						<span>{{ art_setup[0] }}</span>
+						
 					</div>
 
 					<div class="area-item">
