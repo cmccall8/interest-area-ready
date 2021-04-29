@@ -5,9 +5,10 @@
 	<link rel="apple-touch-icon" href="/images/interest-area-logo-04.svg">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#5A4594"/>
 	<!-- <link rel="shortcut icon" href="#"> -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs animate.css/4.1.1/animate.min.css"/> -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 	</head>
@@ -19,22 +20,22 @@
 			<div v-if="page == 'home'" class="home">
 				<h1>WELCOME TEACHERS</h1>
 				<h5>Choose your classroom from the list below to get started.</h5>
-				<div @click="page = 'owls'; getOwls()" class="owl-container">
+				<div @click="page = 'owls'; getOwls(); scrollTop()" class="owl-container">
 				<div class="owl-btn"></div>
 				<h5>OWLS</h5>
 				</div>
-				<div @click="page = 'butterflies'; getButterflies()" class="butterfly-container">
+				<div @click="page = 'butterflies'; getButterflies(); scrollTop()" class="butterfly-container">
 				<div class="butterfly-btn"></div>
 				<h5>BUTTERFLIES</h5>
 				</div>
-				<div @click="page = 'bees'; getBees()" class="bee-container">
+				<div @click="page = 'bees'; getBees(); scrollTop()" class="bee-container">
 				<div class="bee-btn"></div>
 				<h5>BEES</h5>
 				</div>
 			</div>
 
 			<div v-if="page == 'owls'" class="owls-dash">
-				<button @click="page = 'home'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+				<button @click="page = 'home'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 				<h1>OWLS</h1>
 				<h4>Classroom Progress:</h4>
 				<div class="progress-container">
@@ -44,49 +45,49 @@
     			<p>{{ scaleTotal }}%</p>
     			</div>
 				<h5>Choose an interest area from below to work on.</h5>
-				<div @click="page = 'owls_fm'" class="interest-area">
+				<div @click="page = 'owls_fm'; scrollTop()" class="interest-area">
 					<h4>FINE MOTOR SKILLS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: finemtr_progress_color }"></div>
   				</div>
   				<p>{{ finemtr_progress }}%</p>
 				</div>
-				<div @click="page = 'owls_art'" class="interest-area">
+				<div @click="page = 'owls_art'; scrollTop()" class="interest-area">
 					<h4>ART</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
 				</div>
 				<p>{{ art_progress }}%</p>
 			</div>
-				<div @click="page = 'owls_music'" class="interest-area">
+				<div @click="page = 'owls_music'; scrollTop()" class="interest-area">
 					<h4>MUSIC & MOVEMENT</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
   				</div>
   				<p>{{ music_progress }}%</p>
 				</div>
-				<div @click="page = 'owls_blocks'" class="interest-area">
+				<div @click="page = 'owls_blocks'; scrollTop()" class="interest-area">
 					<h4>BLOCKS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
   				</div>
   				<p>{{ blocks_progress }}%</p>
 				</div>
-				<div @click="page = 'owls_drama'" class="interest-area">
+				<div @click="page = 'owls_drama'; scrollTop()" class="interest-area">
 					<h4>DRAMATIC PLAY</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
   				</div>
   				<p>{{ drama_progress }}%</p>
 				</div>
-				<div @click="page = 'owls_math'" class="interest-area">
+				<div @click="page = 'owls_math'; scrollTop()" class="interest-area">
 					<h4>MATH/NUMBERS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
   					</div>
   					<p>{{ math_progress }}%</p>
 				</div>
-				<div @click="page = 'owls_grossmtr'" class="interest-area">
+				<div @click="page = 'owls_grossmtr'; scrollTop()" class="interest-area">
 					<h4>GROSS MOTOR SKILLS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
@@ -225,7 +226,7 @@
 
 		<!-- OWLS ART -->
 		<div v-if="page == 'owls_art'" class="owls-item">
-		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'owls'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>ART</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -390,7 +391,7 @@
 
 		<!-- OWLS MUSIC & MOVEMENT -->
 		<div v-if="page == 'owls_music'" class="owls-item">
-			<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<button @click="page = 'owls'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 			<h2>MUSIC & MOVEMENT</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -528,7 +529,7 @@
 
 		<!-- OWLS BLOCKS -->
 		<div v-if="page == 'owls_blocks'" class="owls-item">
-		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'owls'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>BLOCKS</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -652,7 +653,7 @@
 
 		<!-- OWLS DRAMATIC PLAY -->
 		<div v-if="page == 'owls_drama'" class="owls-item">
-		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'owls'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>DRAMATIC PLAY</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -802,7 +803,7 @@
 
 		<!-- OWLS MATH/NUMBER -->
 		<div v-if="page == 'owls_math'" class="owls-item">
-		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'owls'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>MATH/NUMBER</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -925,7 +926,7 @@
 
 		<!-- OWLS GROSS MOTOR-->
 		<div v-if="page == 'owls_grossmtr'" class="owls-item">
-		<button @click="page = 'owls'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'owls'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>GROSS MOTOR SKILLS</h2>
 
 				<button class="btn" @click="updateOwls()">SAVE CHANGES</button>
@@ -1050,7 +1051,7 @@
 
 		<!-- BUTTERFLIES -->
 		<div v-if="page == 'butterflies'" class="butterfly-dash">
-			<button @click="page = 'home'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<button @click="page = 'home'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 			<h1>BUTTERFLIES</h1>
 			<h4>Classroom Progress:</h4>
 			<div class="progress-container">
@@ -1060,49 +1061,49 @@
     			<p>{{ scaleTotal }}%</p>
     			</div>
 				<h5>Choose an interest area from below to work on.</h5>
-				<div @click="page = 'butterfly_fm'" class="interest-area">
+				<div @click="page = 'butterfly_fm'; scrollTop()" class="interest-area">
 					<h4>FINE MOTOR SKILLS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: finemtr_progress_color }"></div>
   				</div>
   				<p>{{ finemtr_progress }}%</p>
 				</div>
-				<div @click="page = 'butterfly_art'" class="interest-area">
+				<div @click="page = 'butterfly_art'; scrollTop()" class="interest-area">
 					<h4>ART</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
 				</div>
 				<p>{{ art_progress }}%</p>
 			</div>
-				<div @click="page = 'butterfly_music'" class="interest-area">
+				<div @click="page = 'butterfly_music'; scrollTop()" class="interest-area">
 					<h4>MUSIC & MOVEMENT</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
   				</div>
   				<p>{{ music_progress }}%</p>
 				</div>
-				<div @click="page = 'butterfly_blocks'" class="interest-area">
+				<div @click="page = 'butterfly_blocks'; scrollTop()" class="interest-area">
 					<h4>BLOCKS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
   				</div>
   				<p>{{ blocks_progress }}%</p>
 				</div>
-				<div @click="page = 'butterfly_drama'" class="interest-area">
+				<div @click="page = 'butterfly_drama'; scrollTop()" class="interest-area">
 					<h4>DRAMATIC PLAY</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
   				</div>
   				<p>{{ drama_progress }}%</p>
 				</div>
-				<div @click="page = 'butterfly_math'" class="interest-area">
+				<div @click="page = 'butterfly_math'; scrollTop()" class="interest-area">
 					<h4>MATH/NUMBERS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
   					</div>
   					<p>{{ math_progress }}%</p>
 				</div>
-				<div @click="page = 'butterfly_grossmtr'" class="interest-area">
+				<div @click="page = 'butterfly_grossmtr'; scrollTop()" class="interest-area">
 					<h4>GROSS MOTOR SKILLS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
@@ -1114,7 +1115,7 @@
 
 		<!-- butterfly FINE MOTOR -->
 		<div v-if="page == 'butterfly_fm'" class="butterfly-item">
-			<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 			<h2>FINE MOTOR SKILLS</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -1241,7 +1242,7 @@
 
 		<!-- butterfly ART -->
 		<div v-if="page == 'butterfly_art'" class="butterfly-item">
-		<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>ART</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -1406,7 +1407,7 @@
 
 		<!-- butterfly MUSIC & MOVEMENT -->
 		<div v-if="page == 'butterfly_music'" class="butterfly-item">
-		<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>MUSIC & MOVEMENT</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -1544,7 +1545,7 @@
 
 		<!-- butterfly BLOCKS -->
 		<div v-if="page == 'butterfly_blocks'" class="butterfly-item">
-		<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>BLOCKS</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -1668,7 +1669,7 @@
 
 		<!-- butterfly DRAMATIC PLAY -->
 		<div v-if="page == 'butterfly_drama'" class="butterfly-item">
-		<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>DRAMATIC PLAY</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -1818,7 +1819,7 @@
 
 		<!-- butterfly MATH/NUMBER -->
 		<div v-if="page == 'butterfly_math'" class="butterfly-item">
-		<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>MATH/NUMBER</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -1941,7 +1942,7 @@
 
 		<!-- butterfly GROSS MOTOR-->
 		<div v-if="page == 'butterfly_grossmtr'" class="butterfly-item">
-		<button @click="page = 'butterflies'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'butterflies'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>GROSS MOTOR SKILLS</h2>
 
 				<button class="btn" @click="updateButterflies()">SAVE CHANGES</button>
@@ -2066,7 +2067,7 @@
 
 <!-- BEES -->
 		<div v-if="page == 'bees'" class="bees-dash">
-			<button @click="page = 'home'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<button @click="page = 'home'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 			<h1>BEES</h1>
 			<h4>Classroom Progress:</h4>
 			<div class="progress-container">
@@ -2076,49 +2077,49 @@
     			<p>{{ scaleTotal }}%</p>
     			</div>
 				<h5>Choose an interest area from below to work on.</h5>
-				<div @click="page = 'bees_fm'" class="interest-area">
+				<div @click="page = 'bees_fm'; scrollTop()" class="interest-area">
 					<h4>FINE MOTOR SKILLS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: finemtr_progress + '%', backgroundColor: finemtr_progress_color }"></div>
   				</div>
   				<p>{{ finemtr_progress }}%</p>
 				</div>
-				<div @click="page = 'bees_art'" class="interest-area">
+				<div @click="page = 'bees_art'; scrollTop()" class="interest-area">
 					<h4>ART</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: art_progress + '%', backgroundColor: art_progress_color }"></div>
 				</div>
 				<p>{{ art_progress }}%</p>
 			</div>
-				<div @click="page = 'bees_music'" class="interest-area">
+				<div @click="page = 'bees_music'; scrollTop()" class="interest-area">
 					<h4>MUSIC & MOVEMENT</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: music_progress + '%', backgroundColor: music_progress_color }"></div>
   				</div>
   				<p>{{ music_progress }}%</p>
 				</div>
-				<div @click="page = 'bees_blocks'" class="interest-area">
+				<div @click="page = 'bees_blocks'; scrollTop()" class="interest-area">
 					<h4>BLOCKS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: blocks_progress + '%', backgroundColor: progressColor }"></div>
   				</div>
   				<p>{{ blocks_progress }}%</p>
 				</div>
-				<div @click="page = 'bees_drama'" class="interest-area">
+				<div @click="page = 'bees_drama'; scrollTop()" class="interest-area">
 					<h4>DRAMATIC PLAY</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: drama_progress + '%', backgroundColor: drama_progress_color }"></div>
   				</div>
   				<p>{{ drama_progress }}%</p>
 				</div>
-				<div @click="page = 'bees_math'" class="interest-area">
+				<div @click="page = 'bees_math'; scrollTop()" class="interest-area">
 					<h4>MATH/NUMBERS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: math_progress + '%', backgroundColor: math_progress_color }"></div>
   					</div>
   					<p>{{ math_progress }}%</p>
 				</div>
-				<div @click="page = 'bees_grossmtr'" class="interest-area">
+				<div @click="page = 'bees_grossmtr'; scrollTop()" class="interest-area">
 					<h4>GROSS MOTOR SKILLS</h4>
 					<div class="progress-bar">
     				<div class="progress" v-bind:style="{ width: grossmtr_progress + '%', backgroundColor: grossmtr_progress_color }"></div>
@@ -2130,7 +2131,7 @@
 
 		<!-- bees FINE MOTOR -->
 		<div v-if="page == 'bees_fm'" class="bees-item">
-			<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+			<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 			<h2>FINE MOTOR SKILLS</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
@@ -2257,7 +2258,7 @@
 
 		<!-- bees ART -->
 		<div v-if="page == 'bees_art'" class="bees-item">
-		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>ART</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
@@ -2422,7 +2423,7 @@
 
 		<!-- bees MUSIC & MOVEMENT -->
 		<div v-if="page == 'bees_music'" class="bees-item">
-		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>MUSIC & MOVEMENT</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
@@ -2560,7 +2561,7 @@
 
 		<!-- bees BLOCKS -->
 		<div v-if="page == 'bees_blocks'" class="bees-item">
-		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>BLOCKS</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
@@ -2684,7 +2685,7 @@
 
 		<!-- bees DRAMATIC PLAY -->
 		<div v-if="page == 'bees_drama'" class="bees-item">
-		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>DRAMATIC PLAY</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
@@ -2834,7 +2835,7 @@
 
 		<!-- bees MATH/NUMBER -->
 		<div v-if="page == 'bees_math'" class="bees-item">
-		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>MATH/NUMBER</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>
@@ -2957,7 +2958,7 @@
 
 		<!-- bees GROSS MOTOR-->
 		<div v-if="page == 'bees_grossmtr'" class="bees-item">
-		<button @click="page = 'bees'" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+		<button @click="page = 'bees'; scrollTop()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
 		<h2>GROSS MOTOR SKILLS</h2>
 
 				<button class="btn" @click="updateBees()">SAVE CHANGES</button>

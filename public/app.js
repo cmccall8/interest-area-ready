@@ -97,6 +97,10 @@ var app = new Vue({
 	},
 
 	methods: {
+		scrollTop: function() {
+			window.scrollTo(0,0);
+		},
+
 		getOwls: function() {
 			getOwlsFromServer().then((response) => {
 				response.json().then((data) => {
