@@ -5,6 +5,7 @@ const toCache = [
 	'/status.js',
   '/app.js',
   '/style.css',
+  '/manifest.webmanifest'
 	];
 
 self.addEventListener('install', function(event) {
@@ -24,6 +25,7 @@ self.addEventListener('fetch', function(event) {
         return caches.open(CACHE_NAME)
           .then((cache) => {
             return cache.match(event.request)
+            console.log(cache)
           })
       })
   )
