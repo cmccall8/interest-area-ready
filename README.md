@@ -15,4 +15,6 @@ The Interest Area Ready App was created with the following web technologies and 
 ## App Use and Examples
 The application can be downloaded via the browser to a phone, tablet, or computer. The UI is optimized for phone use, but is built to be responzive to any screen size. The application features a dashboard for each classroom consisting of scales for the assessment. Progress can be seen for each scale as well as overall progress.
 
-<img src="public/images/Screen Shot 2021-05-06 at 9.03.48 PM.png"/> | <img src="public/images/Screen Shot 2021-05-06 at 9.04.01 PM.png"/>
+<img src="public/images/Screen Shot 2021-05-06 at 9.03.48 PM.png" width="300px"/>|<img src="public/images/Screen Shot 2021-05-06 at 9.04.01 PM.png" width="300px"/>
+---
+<img src="public/images/Screen Shot 2021-05-06 at 9.04.17 PM.png" width="300px"/>
